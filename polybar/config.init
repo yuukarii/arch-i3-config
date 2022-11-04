@@ -48,9 +48,9 @@ module-margin = 1
 separator = |
 separator-foreground = ${colors.disabled}
 
-font-0 = NotoSans Nerd Font:size=10;2
+font-0 = NotoSans Nerd Font:style=bold:size=10;2
 
-modules-left = menu-apps xworkspaces network temperature
+modules-left = menu-apps xworkspaces wifichoose network temperature
 modules-center = date playerctl
 modules-right = filesystem pulseaudio memory cpu battery powermenu
 
@@ -77,22 +77,16 @@ menu-0-1 = "%{F#E6E6FA}  %{F-}"
 menu-0-1-exec = /opt/Notion/notion-app
 
 label-separator = |
-label-open = "%{F#7DF9FF}   %{F-}"
-label-close = "%{F#7DF9FF}   %{F-}"
+label-open = "%{F#E97451}   %{F-}"
+label-close = "%{F#E97451}   %{F-}"
 
 [module/powermenu]
-type = custom/menu
-expand-right = false
+type = custom/text
+content = ""
+content-foreground = #f00
+content-padding = 1
+click-left = ~/.config/scripts/powermenu
 
-menu-0-0 = "  "
-menu-0-0-exec = poweroff
-menu-0-1 = "  "
-menu-0-1-exec = reboot
-menu-0-2 = "  "
-menu-0-2-exec = i3-msg exit
-
-label-open = "%{F#f00} %{F-}"
-label-close = "%{F#f00} %{F-}"
 
 [module/playerctl]
 type = custom/script
@@ -182,6 +176,13 @@ format-prefix = "  "
 format-prefix-foreground = ${colors.primary}
 label = %percentage:2%%
 
+[module/wifichoose]
+type = custom/text
+content = ""
+content-foreground = #E97451
+content-padding = 1
+click-left = ~/.config/scripts/rofi-wifi-menu.sh
+
 [module/network]
 type = internal/network
 ; Name of the network interface to display. You can get the names of the
@@ -256,7 +257,7 @@ format-packetloss = <animation-packetloss> <label-connected>
 ;   %mac%       [wireless+wired] (New in version 3.6.0)
 
 ; Default: %ifname% %local_ip%
-label-connected = "  %essid% %downspeed:9% %upspeed:9%"
+label-connected = "%essid% %downspeed:9% %upspeed:9%"
 label-connected-foreground = #eefafa
 
 ; Default: (none)
