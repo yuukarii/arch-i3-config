@@ -219,10 +219,18 @@ bindsym $mod+Shift+e exec ~/.config/scripts/powermenu
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
+# Reload polybar
+bindsym $mod+Shift+p exec --no-startup-id /home/nomad/.config/polybar/launch.sh
+
+# Open some apps
+bindsym $mod+o exec firefox
+bindsym $mod+n exec /opt/Notion/notion-app
+bindsym $mod+c exec code
+
 # Set wallpaper
 exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/ancient_city.jpg
 
 # Autostart apps
-# exec --no-startup-id sleep 3 && ibus-daemon -drx
 exec --no-startup-id dbus-launch dunst
 exec --no-startup-id /home/nomad/.config/polybar/launch.sh
+exec --no-startup-id sleep 3 && ibus-daemon -drx
