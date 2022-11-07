@@ -67,16 +67,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 " 1 "
+set $ws2 " 2 "
+set $ws3 " 3 "
+set $ws4 " 4 "
+set $ws5 " 5 "
+set $ws6 " 6 "
+set $ws7 " 7 "
+set $ws8 " 8 "
+set $ws9 " 9 "
+set $ws10 " 0 "
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -145,8 +145,8 @@ for_window [class="Audacious" instance="audacious"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 
 # rofi
-bindsym $mod+d exec rofi -modi drun -show drun -theme-str '@import "config.rasi"'
-bindsym $mod+t exec rofi -show window -theme-str '@import "config.rasi"'
+bindsym $mod+d exec rofi -modi drun -show drun -theme-str '@import "config.rasi"' -show-icons
+bindsym $mod+t exec rofi -show window -theme-str '@import "config.rasi"' -show-icons
 
 # Backlight control
 bindsym XF86MonBrightnessUp exec xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
@@ -181,3 +181,9 @@ exec --no-startup-id dbus-launch dunst
 exec --no-startup-id /home/nomad/.config/polybar/launch.sh
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id sleep 3 && ibus-daemon -drx
+
+# take a screenshot of a screen region and copy it to a clipboard
+bindsym --release Shift+Print exec "~/.config/scripts/scregcp -s ~/Pictures/screenshots/"
+
+# take a screenshot of a whole window and copy it to a clipboard
+bindsym --release Print exec "~/.config/scripts/scregcp ~/Pictures/screenshots/"
