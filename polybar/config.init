@@ -50,9 +50,9 @@ separator-foreground = ${colors.disabled}
 
 font-0 = NotoSans Nerd Font:style=bold:size=9;2
 
-modules-left = menu-apps xworkspaces bluetooth wifichoose network eth temperature
+modules-left = menu-apps xworkspaces bluetooth wifichoose network eth 
 modules-center = date playerctl
-modules-right = filesystem pulseaudio memory cpu battery powermenu
+modules-right = temperature filesystem pulseaudio memory cpu battery powermenu
 
 cursor-click = pointer
 cursor-scroll = ns-resize
