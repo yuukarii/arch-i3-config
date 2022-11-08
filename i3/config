@@ -17,7 +17,8 @@ exec --no-startup-id dex --autostart --environment i3
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-exec --no-startup-id nm-applet
+# Use rofi to select wifi to connect
+#exec --no-startup-id nm-applet
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -166,7 +167,7 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 # Reload polybar
-bindsym $mod+Shift+p exec --no-startup-id /home/nomad/.config/polybar/launch.sh
+bindsym $mod+Shift+p exec --no-startup-id ~/.config/polybar/launch.sh
 
 # Open some apps
 bindsym $mod+o exec firefox
@@ -178,7 +179,7 @@ exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/ancient_city.jpg
 
 # Autostart apps
 exec --no-startup-id dbus-launch dunst
-exec --no-startup-id /home/nomad/.config/polybar/launch.sh
+exec --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id sleep 3 && ibus-daemon -drx
 
