@@ -14,3 +14,4 @@ pavucontrol.ini
 QtProject.conf
 polybar/player.log
 procps
+llpp.conf

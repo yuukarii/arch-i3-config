@@ -27,7 +27,7 @@ disabled = #707880
 
 [bar/example]
 width = 100%
-height = 20pt
+height = 19pt
 radius = 4
 
 ; dpi = 96
@@ -48,7 +48,7 @@ module-margin = 1
 separator = |
 separator-foreground = ${colors.disabled}
 
-font-0 = NotoSans Nerd Font:style=bold:size=10;2
+font-0 = NotoSans Nerd Font:style=bold:size=9;2
 
 modules-left = menu-apps xworkspaces bluetooth wifichoose network eth temperature
 modules-center = date playerctl
