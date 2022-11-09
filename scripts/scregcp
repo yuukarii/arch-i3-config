@@ -33,7 +33,12 @@ elif [ "${1:0:1}" == '-' ]; then
 else
     base_folder="${1}"
     params="-window root"
-fi  
+fi
+
+if [ ! -d ${base_folder} ] 
+then
+    mkdir ${base_folder}
+fi
 
 file_path=${base_folder}$( date '+%Y-%m-%d_%H-%M-%S' )_screenshot.png
 import ${params} ${file_path}

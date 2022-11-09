@@ -15,7 +15,7 @@ font pango: Noto Sans Regular 10
 
 exec --no-startup-id dex --autostart --environment i3
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Use rofi to select wifi to connect
 #exec --no-startup-id nm-applet
@@ -144,6 +144,7 @@ gaps outer 1
 # floating some apps
 for_window [class="Audacious" instance="audacious"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
+for_window [class="Thunar" instance="thunar"] floating enable
 
 # rofi
 bindsym $mod+d exec rofi -modi drun -show drun -theme-str '@import "config.rasi"' -show-icons
@@ -188,3 +189,6 @@ bindsym --release Shift+Print exec "~/.config/scripts/scregcp -s ~/Pictures/scre
 
 # take a screenshot of a whole window and copy it to a clipboard
 bindsym --release Print exec "~/.config/scripts/scregcp ~/Pictures/screenshots/"
+
+# Turn off bluetooth
+exec --no-startup-id bluetoothctl power off
