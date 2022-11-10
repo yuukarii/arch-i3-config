@@ -20,6 +20,10 @@ exec --no-startup-id dex --autostart --environment i3
 # Use rofi to select wifi to connect
 #exec --no-startup-id nm-applet
 
+# Set DPI for high-resolution screen (e.g 1920x1280)
+# 96, 120 (25% higher), 144 (50% higher), 168 (75% higher), 192 (100% higher) 
+#exec --no-startup-id xrandr --dpi 120
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
