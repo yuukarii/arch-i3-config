@@ -13,10 +13,6 @@ set $mod Mod4
 
 font pango: Noto Sans Regular 10
 
-exec --no-startup-id dex --autostart --environment i3
-
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
 # Use rofi to select wifi to connect
 #exec --no-startup-id nm-applet
 
@@ -27,9 +23,6 @@ exec --no-startup-id dex --autostart --environment i3
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -145,18 +138,47 @@ for_window [class=.*] border pixel 2
 gaps inner 5
 gaps outer 1
 
+######################################
+# color settings for bar and windows #
+######################################
+
+# Define colors variables:
+set $darkbluetrans  #08052be6
+set $darkblue       #08052b
+set $lightblue      #5294e2
+set $urgentred      #e53935
+set $white      #ffffff
+set $black      #000000
+set $purple     #e345ff
+set $darkgrey       #383c4a
+set $grey       #b0b5bd
+set $mediumgrey     #8b8b8b
+set $yellowbrown    #e1b700
+set $redcrimson     #dc143c
+
+# define colors for windows:
+#class                      border      bground     text        indicator       child_border
+client.focused              $lightblue  $darkblue   $white      $mediumgrey     $redcrimson
+client.unfocused            $darkblue   $darkblue   $grey       $darkgrey       $darkgrey
+client.focused_inactive     $darkblue   $darkblue   $grey       $black          $black
+client.urgent               $urgentred  $urgentred  $white      $yellowbrown    $yellowbrown
+
 # floating some apps
 for_window [class="Audacious" instance="audacious"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Thunar" instance="thunar"] floating enable
 
 # rofi
-bindsym $mod+d exec rofi -modi drun -show drun -theme-str '@import "config.rasi"' -show-icons
-bindsym $mod+t exec rofi -show window -theme-str '@import "config.rasi"' -show-icons
+bindsym $mod+d exec rofi -modi drun -show drun \
+        -theme-str '@import "config.rasi"' -show-icons
+bindsym $mod+t exec rofi -show window \
+        -theme-str '@import "config.rasi"' -show-icons
 
 # Backlight control
-bindsym XF86MonBrightnessUp exec xbacklight +5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
-bindsym XF86MonBrightnessDown exec xbacklight -5 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
+bindsym XF86MonBrightnessUp exec xbacklight +5 \
+        && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
+bindsym XF86MonBrightnessDown exec xbacklight -5 \
+        && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 
 # Volume control
 bindsym XF86AudioMute exec pamixer --toggle-mute 
@@ -165,6 +187,8 @@ bindsym XF86AudioLowerVolume exec pamixer --decrease 5
 
 # Power menu
 bindsym $mod+Shift+e exec ~/.config/scripts/powermenu
+
+# Lock screen
 bindsym $mod+l exec betterlockscreen -l dim
 
 # switch/iterate between workspaces
@@ -176,11 +200,17 @@ bindsym $mod+Shift+p exec --no-startup-id ~/.config/polybar/launch.sh
 
 # Open some apps
 bindsym $mod+o exec firefox
-bindsym $mod+n exec /opt/Notion/notion-app
+bindsym $mod+n exec notion-app
 bindsym $mod+c exec code
+
+# Open keyhint
+bindsym F1 exec ~/.config/scripts/keyhint-2
 
 # Set wallpaper
 exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/ancient_city.jpg
+
+# set powersavings for display:
+exec --no-startup-id xset s 480 dpms 600 600 600
 
 # Autostart apps
 exec --no-startup-id dbus-launch dunst
@@ -189,10 +219,12 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id sleep 3 && ibus-daemon -drx
 
 # take a screenshot of a screen region and copy it to a clipboard
-bindsym --release Shift+Print exec "~/.config/scripts/scregcp -s ~/Pictures/screenshots/"
+bindsym --release Shift+Print exec "~/.config/scripts/scregcp -s \
+        ~/Pictures/screenshots/"
 
 # take a screenshot of a whole window and copy it to a clipboard
-bindsym --release Print exec "~/.config/scripts/scregcp ~/Pictures/screenshots/"
+bindsym --release Print exec "~/.config/scripts/scregcp \
+        ~/Pictures/screenshots/"
 
 # Turn off bluetooth
 exec --no-startup-id bluetoothctl power off
