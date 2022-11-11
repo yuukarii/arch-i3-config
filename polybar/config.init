@@ -49,6 +49,7 @@ separator = |
 separator-foreground = ${colors.disabled}
 
 font-0 = NotoSans Nerd Font:style=bold:size=9;2
+font-1 = Noto Sans CJK JP:style=bold:size=9;2
 
 modules-left = menu-apps xworkspaces bluetooth wifichoose network eth 
 modules-center = date playerctl
@@ -107,9 +108,12 @@ label-disconnected-foreground = #66ffff
 
 [module/playerctl]
 type = custom/script
-exec = ~/.config/polybar/playerctl_script.sh
+label-active-font = 1
+exec = ~/.config/scripts/playerctl_script.sh
 tail = true
 interval = 1
+click-left = playerctl play-pause
+click-right = playerctl next
 
 [module/xworkspaces]
 type = internal/xworkspaces
