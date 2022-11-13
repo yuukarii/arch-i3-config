@@ -199,9 +199,9 @@ bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/polybar/launch.sh
 
 # Open some apps
-bindsym $mod+o exec firefox
+bindsym $mod+b exec firefox
 bindsym $mod+n exec notion-app
-bindsym $mod+c exec code
+bindsym $mod+x exec code
 
 # Open keyhint
 bindsym F1 exec ~/.config/scripts/keyhint-2
