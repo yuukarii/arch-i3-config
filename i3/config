@@ -195,8 +195,10 @@ bindsym $mod+l exec betterlockscreen -l dim
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
-# Reload polybar
-bindsym $mod+Shift+p exec --no-startup-id ~/.config/polybar/launch.sh
+# Display polybar
+bindsym $mod+p exec --no-startup-id ~/.config/polybar/launch.sh
+# Hide polybar (kill it :)))
+bindsym $mod+Shift+p exec killall -q polybar
 
 # Open some apps
 bindsym $mod+b exec firefox
