@@ -162,7 +162,7 @@ type = internal/pulseaudio
 ;label-muted-foreground = ${colors.disabled}
 
 format-volume = <ramp-volume> <label-volume>
-label-muted = 婢 muted
+label-muted = 婢 
 label-muted-foreground = #666
 
 ; Only applies if <ramp-volume> is used

@@ -16,3 +16,6 @@ polybar/player.log
 procps
 llpp.conf
 libreoffice
+coc
+nvim
+vlc
