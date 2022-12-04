@@ -242,3 +242,6 @@ bindsym --release Print exec "~/.config/scripts/scregcp \
 
 # Turn off bluetooth
 exec --no-startup-id bluetoothctl power off
+
+# Set refresh rate for HDMI1
+exec --no-startup-id xrandr --output HDMI1 --mode 1920x1080 --rate '74.97'
